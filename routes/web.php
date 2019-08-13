@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'SiteController@showDahboard');
+Route::get('/auth/','SiteController@showLogin');
