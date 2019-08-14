@@ -19,4 +19,5 @@ Route::get('/products/new','AdminController@newProduct');
 Route::post('/products/save','AdminController@saveProduct');
 Route::get('/products/edit/{id}','AdminController@editProduct');
 Route::post('/products/update/{id}','AdminController@updateProduct');
+Route::get('/orders','AdminController@showOrders');
 

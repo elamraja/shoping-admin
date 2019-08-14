@@ -20,7 +20,7 @@
                 <ul>
                     <li class="{{ Request::is('/') ? 'active':'' }}"><a href="{{ URL::to('/') }}"><i class="fa fa-tachometer"></i> Dashboard</a></li>
                     <li class="{{ Request::is('products') || Request::is('products/*') ? 'active': '' }}"><a href="{{ URL::to('/products') }}"><i class="fa fa-product-hunt"></i> Products</a></li>
-                    <li><a href="#"><i class="fa fa-first-order"></i> Orders</a></li>
+                    <li class="{{ Request::is('orders') || Request::is('orders/*') ? 'active': '' }}"><a href="{{ URL::to('/orders') }}"><i class="fa fa-first-order"></i> Orders</a></li>
                 </ul>
             </div>
         </div>

@@ -17,5 +17,6 @@ Route::post('login', 'PassportController@login');
 Route::post('register', 'PassportController@register');
 Route::middleware('auth:api')->group(function () {
     Route::get('user', 'PassportController@details');
+    Route::post('order','ApiController@saveOrder');
 });
 Route::get('products','ApiController@getProducts');

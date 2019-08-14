@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Products;
+use App\Orders;
 use Session;
 use File;
 
@@ -21,6 +22,7 @@ class AdminController extends Controller
         $products = Products::all();
         return view('products')->with('products',$products);
     }
+
 
     public function newProduct(){
         return view('product-form');
@@ -96,5 +98,10 @@ class AdminController extends Controller
             Session::flash('msg','saved');
             return redirect('products/');
         }
+    }
+
+    public function showOrders(){
+        $orders = Orders::with('items')->with('user')->get();
+        return view('orders')->with('orders',$orders);
     }
 }

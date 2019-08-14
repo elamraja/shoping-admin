@@ -20,7 +20,7 @@ class PassportController extends Controller
             'password' => bcrypt($request->password)
         ]);
         $token = $user->createToken('svitech')->accessToken;
-        return response()->json(['token' => $token], 200);
+        return response()->json(['token' => $token,'user'=>$user], 200);
     }
 
     public function login(Request $request)
@@ -32,9 +32,9 @@ class PassportController extends Controller
         ];
         if (auth()->attempt($credentials)) {
             $token = auth()->user()->createToken('svitech')->accessToken;
-            return response()->json(['token' => $token], 200);
+            return response()->json(['token' => $token,'user'=>auth()->user()], 200);
         } else {
-            return response()->json(['error' => 'UnAuthorised'], 401);
+            return response()->json(['error' => 'Credentials invalid'], 401);
         }
     }
 
