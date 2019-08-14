@@ -18,8 +18,8 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li><a href="#"><i class="fa fa-tachometer"></i> Dashboard</a></li>
-                    <li><a href="#"><i class="fa fa-product-hunt"></i> Products</a></li>
+                    <li class="{{ Request::is('/') ? 'active':'' }}"><a href="{{ URL::to('/') }}"><i class="fa fa-tachometer"></i> Dashboard</a></li>
+                    <li class="{{ Request::is('products') || Request::is('products/*') ? 'active': '' }}"><a href="{{ URL::to('/products') }}"><i class="fa fa-product-hunt"></i> Products</a></li>
                     <li><a href="#"><i class="fa fa-first-order"></i> Orders</a></li>
                 </ul>
             </div>
@@ -30,6 +30,9 @@
                     <li><a href="#">{{ Auth::guard('user')->user()->name }}</a></li>
                     <li><a href="{{ URL::to('/signout') }}"><i class="fa fa-power-off"></i></a></li>
                 </ul>
+            </div>
+            <div class="main_content">
+                @yield('main-content')
             </div>
         </div>
     </div>
