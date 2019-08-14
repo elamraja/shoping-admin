@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'SiteController@showDahboard');
 Route::get('/auth/','SiteController@showLogin');
+Route::post('/auth/','SiteController@doLogin');
+Route::get('/signout/','SiteController@doLogout');
+Route::get('/', 'AdminController@showDashboard');
+

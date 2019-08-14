@@ -7,13 +7,30 @@
     <title>SVI - Authentication</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
     {{ HTML::style('sadmin/plugins/bootstrap/css/bootstrap.min.css') }}
+    {{ HTML::style('sadmin/plugins/font-awesome/css/font-awesome.min.css') }}
     {{ HTML::style('sadmin/css/main.css') }}
 </head>
 <body>
     <div class="wrapper">
-        <div class="sidebar"></div>
+        <div class="sidebar">
+            <div class="logo">
+                <h2>SVI Shopping</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#"><i class="fa fa-tachometer"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fa fa-product-hunt"></i> Products</a></li>
+                    <li><a href="#"><i class="fa fa-first-order"></i> Orders</a></li>
+                </ul>
+            </div>
+        </div>
         <div class="content">
-            <div class="header"></div>
+            <div class="header">
+                <ul>
+                    <li><a href="#">{{ Auth::guard('user')->user()->name }}</a></li>
+                    <li><a href="{{ URL::to('/signout') }}"><i class="fa fa-power-off"></i></a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </body>

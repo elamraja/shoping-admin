@@ -13,17 +13,25 @@
     <div class="login_cover">
         <div class="login_box">
             <h2>SVI ADMIN PANEL</h2>
+
             <div class="row">
+                {{ FORM::open(['url'=>'/auth/','method'=>'post']) }}
                 <div class="col-md-12">
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('email') ? 'has-error': '' }}">
                         <label class="control-label">Email Address</label>
-                        <input type="text" class="form-control" placeholder="Enter the email address">
+                        {{ FORM::text('email','',['class'=>'form-control','placeholder'=>'Enter the email address']) }}
+                        @if($errors->has('email'))
+                        <span class="help-block">{{ $errors->first('email') }}</span>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('password') ? 'has-error': '' }}">
                         <label class="control-label">Password</label>
-                        <input type="text" class="form-control" placeholder="Enter the email address">
+                        {{ FORM::password('password',['class'=>'form-control','placeholder'=>'Enter the password']) }}
+                         @if($errors->has('password'))
+                        <span class="help-block">{{ $errors->first('password') }}</span>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -31,6 +39,14 @@
                        <button type="submit" class="btn btn-primary">LOGIN</button>
                     </div>
                 </div>
+                @if($errors->has('invalid'))
+                <div class="col-md-12">
+                    <div class="form-group has-error">
+                       <span class="help-block text-center">{{ $errors->first('invalid') }}</span>
+                    </div>
+                </div>
+                @endif
+                {{ FORM::close() }}
             </div>
         </div>
     </div>
